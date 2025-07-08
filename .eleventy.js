@@ -39,6 +39,20 @@ module.exports = function (eleventyConfig) {
     "png",
   ]);
 
+  eleventyConfig.addNunjucksFilter("date", (dateString) => {
+    dateObj = new Date(dateString);
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('LLLL yyyy');
+  });
+
+  eleventyConfig.addNunjucksFilter("fulldate", (dateString) => {
+    dateObj = new Date(dateString);
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('d LLLL yyyy');
+  });
+
+  eleventyConfig.addNunjucksFilter("getLatest", function(collection) {
+    return collection.sort((a, b) => b.date - a.date)[1];
+  });
+
   eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPassthroughCopy("assets");
@@ -48,11 +62,6 @@ module.exports = function (eleventyConfig) {
   const seo = require("./src/seo.json");
 
   eleventyConfig.addPlugin(pluginSEO, seo);
-
-  // Filters let you modify the content https://www.11ty.dev/docs/filters/
-  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
-  });
 
   eleventyConfig.setBrowserSyncConfig({ ghostMode: false });
 

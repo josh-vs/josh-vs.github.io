@@ -3,10 +3,10 @@ layout: layout.njk
 ---
 
 <article>
+<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
   <div class="container">
-    <hr>
-    <br>
     <div>
+      <p class="italic text-center opacity-50">{{ date | fulldate }}</span>
       <h1>{{ name }}</h1>
     </div>
     <br>
@@ -27,7 +27,6 @@ layout: layout.njk
       </div>
     {% endif %}
       <p>{{ content | safe }}</p>
-      {# <i class="date">{{ date | date: "%b %d, %Y" }}</i> #}
     {% if next %}
       <a href="{{ next }}">
         <h1>→</h1>
@@ -36,19 +35,22 @@ layout: layout.njk
       <hr>
       <br>
     {% endif %}
-  <section>
+  <section id="sketchpage">
     <div class="columns-2 flex-auto">
-      {% for pic in collections.sketch %}
-        <span class="">{{ pic.data.name }}</span>
-        <br>
-        <a href="{{ pic.url }}">
+      {% for pic in collections.sketch | reverse %}
+          <p class="opacity-30 italic text-center">{{ pic.date | date }}:</p>
+          <span >{{ pic.data.name }}</span>
+          <br><br>
+          <a href="{{ pic.url }}">
             <div class="h-80">
               <img class="rounded-md shadow-lg shadow-blorp" src="{{ pic.data.path }}" alt="{{ pic.data.name }}" />
             </div>
-          {# <span class="date">{{ pic.data.date | date:("MMM dd, YYYY") }}</span> #}
-        </a>
-        <br>
+          </a>
+          <br>
+          <hr>
+          <br>
       {% endfor %}
     </div>
   </section>
+</div>
 </article>

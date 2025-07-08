@@ -5,6 +5,7 @@ tags: nav
 ---
 
 <section id="about">
+<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
   <br>
   <div>
     <h1>About</h1>
@@ -12,81 +13,137 @@ tags: nav
     <p class="text-center">My name is Josh. I like to make things and learn stuff.
     <p>
   </div>
+</div>
 </section>
+
+<br>
+
+<section id="projects">
+<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
+  <br>
+  <hr>
+  <br>
+  <div>
+    <h1>Projects</h1>
+    <br>
+    {% for post in collections.proj %}
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+      <p class="opacity-30 italic text-center">{{ post.data.author }} - {{ post.data.date | fulldate }}</p>
+    <br>
+    {% endfor %}
+  </div>
+</div>
+</section>
+
+<br>
+
 <section id="library">
+<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
   <br>
   <hr>
   <br>
   <div>
     <h1>Library</h1>
     <br>
-    <ul>
       {% for post in collections.lib %}
-      <li>
         <a href="{{ post.url }}">{{ post.data.title }}</a>
-        <span>{# {{ post.data.author }} - {{ post.data.date | date: ("MMM dd, YYYY") }} #}
-        </span>
+        <p class="opacity-30 italic text-center">{{ post.data.author }} - last updated: {{ post.data.date | fulldate }}</p>
         <br>
-      </li>
       {% endfor %}
-    </ul>
   </div>
+</div>
 </section>
+
+<br>
+
 <section id="gallery">
+<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
   <br>
   <hr>
   <br>
   <div>
-    <h1>Gallery</h1>
+  {% set atPost = 0 %}
+    {% for pic in collections.gallery | reverse%}
+      {% if atPost < 1 %}
+        <a href="{{ pic.url }}#gallerypage"><h1>Gallery</h1></a>
+      {% endif%}
+      {% set atPost = atPost + 1 %}
+    {% endfor %}
     <br>
     <div class="columns-2 flex-auto">
-      {% for pic in collections.gallery %}
-        <span class="">{{ pic.data.name }}</span>
-        <br>
-        <a href="{{ pic.url }}">
+      {% set atPost = 0 %}
+      {% for pic in collections.gallery | reverse%}
+        {% if atPost < 4 %}
+          <p class="opacity-30 italic text-center">{{ pic.date | date }}:</p>
+          <span >{{ pic.data.name }}</span>
+          <br><br>
+          <a href="{{ pic.url }}">
             <div class="h-80">
               <img class="rounded-md shadow-lg shadow-blorp" src="{{ pic.data.path }}" alt="{{ pic.data.name }}" />
             </div>
-          {# <span class="date">{{ pic.data.date | date:("MMM dd, YYYY") }}</span> #}
-        </a>
-        <br>
+          </a>
+          <br>
+          <hr>
+          <br>
+        {% endif%}
+        {% set atPost = atPost + 1 %}
       {% endfor %}
     </div>
-  </div>
-</section>
-<section id="sketch">
-  <br>
-  <hr>
-  <br>
-  <div>
-    <h1>Sketchbook</h1>
-    <br>
-    <div class="columns-2 flex-auto">
-      {% for pic in collections.sketch %}
-        <span class="">{{ pic.data.name }}</span>
-        <br>
-        <a href="{{ pic.url }}">
-            <div class="h-80">
-              <img class="rounded-md shadow-lg shadow-blorp" src="{{ pic.data.path }}" alt="{{ pic.data.name }}" />
-            </div>
-          {# <span class="date">{{ pic.data.date | date:("MMM dd, YYYY") }}</span> #}
-        </a>
-        <br>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-<section id="projects">
-  <br>
-  <hr>
-  <br>
-  <div>
-    <h1>Projects</h1>
-    <br /><br />
-    {% for post in collections.proj %}
-    <a href="{{ post.url }}">{{ post.data.title }}</a><br /><br />
-    <span class="date">{# {{ post.data.author }} - {{ post.data.date | date: ("MMM dd, YYYY") }} #}
-    </span>
+  {% set atPost = 0 %}
+    {% for pic in collections.gallery | reverse%}
+      {% if atPost < 1 %}
+        <a href="{{ pic.url }}#gallerypage"><h1>View more...</h1></a>
+      {% endif%}
+      {% set atPost = atPost + 1 %}
     {% endfor %}
   </div>
+</div>
 </section>
+
+<br>
+
+<section id="sketch">
+<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
+  <br>
+  <hr>
+  <br>
+  <div>
+   {% set atPost = 0 %}
+    {% for pic in collections.sketch | reverse%}
+      {% if atPost < 1 %}
+        <a href="{{ pic.url }}#sketchpage"><h1>Sketchbook</h1></a>
+      {% endif%}
+      {% set atPost = atPost + 1 %}
+    {% endfor %}
+    <br>
+    <div class="columns-2 flex-auto">
+      {% set atPost = 0 %}
+      {% for pic in collections.sketch | reverse%}
+        {% if atPost < 4 %}
+          <p class="opacity-30 italic text-center">{{ pic.date | date }}:</p>
+          <span >{{ pic.data.name }}</span>
+          <br><br>
+          <a href="{{ pic.url }}">
+            <div class="h-80">
+              <img class="rounded-md shadow-lg shadow-blorp" src="{{ pic.data.path }}" alt="{{ pic.data.name }}" />
+            </div>
+          </a>
+          <br>
+          <hr>
+          <br>
+        {% endif%}
+        {% set atPost = atPost + 1 %}
+      {% endfor %}
+    </div>
+  {% set atPost = 0 %}
+    {% for pic in collections.sketch | reverse%}
+      {% if atPost < 1 %}
+        <a href="{{ pic.url }}#sketchpage"><h1>View more...</h1></a>
+      {% endif%}
+      {% set atPost = atPost + 1 %}
+    {% endfor %}
+    </div>
+  </div>
+</div>
+</section>
+

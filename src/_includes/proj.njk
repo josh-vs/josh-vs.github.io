@@ -2,7 +2,7 @@
 layout: layout.njk
 ---
 <article>
-  
+<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
   <div class="text-center"><h1>{{ title }}</h1></div><br>
   <hr><br>
   <div class="text-left">{{ content | safe }}</div>
@@ -12,4 +12,5 @@ layout: layout.njk
       Written by {{ author }} - {{ date | date: "%b %d, %Y" }}
     </i> #}
   </p><br>
+</div>
 </article>
