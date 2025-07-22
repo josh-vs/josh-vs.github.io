@@ -1,8 +1,22 @@
 ---
-title: "Github Pages - danielvonstolzenberg.github.io"
+title: "Github Pages - josh-vs.github.io"
 date: 2025-03-25
 author: "Josh"
 ---
+
+## Table of contents:
+
+	- [Introduction](#intro)
+	- [File structure](#file-structure)
+	- [Eleventy](#eleventy)
+	- [Nunjucks](#nunjucks)
+	- [Tailwind & Postcss](#tailwind-post-css)
+	- [Gallery](#gallery)
+	- [Remark42?](#remark)
+	- [GitHub Pages](#gh-pages)
+
+<br id="intro"></br>
+## Introduction
 
 <br> The site you're currently viewing is made using [Elventy](https://www.11ty.dev/), a simple, open source static site generator available through node.js.
 
@@ -10,11 +24,21 @@ author: "Josh"
 
 <br> After installing Eleventy into my site folder, I set up the .eleventy.js file:
 
+<br> - [ ] tailwind and postcss
+
 <br> ![](/assets/img/dvssite/eleventyjs.png)
 
-<br> And this is what the directories look like:  
+<br id="file-structure"></br>
+
+## File structure
+
+<br> And this is what the directories look like:
 
 <br> ![](/assets/img/dvssite/directories.png)
+
+<br id="eleventy"><br>
+
+## Eleventy
 
 <br> The first in the chain for the site are the templates in the _includes folder. Base.liquid is the base template for all other templates and for the index.html file.
 
@@ -34,6 +58,12 @@ author: "Josh"
 
 <br> ![](/assets/img/dvssite/libliquid.png)
 
+
+
+## Nunjucks
+
+- [ ] add nunjucks config
+
 <br> Using liquid we can format the document to automatically input the title, date and author which is at the top of the .md file.
 
 <br> ![](/assets/img/dvssite/artmd.png)
@@ -45,6 +75,25 @@ author: "Josh"
 <br> Now any new .md files added to the folders are automatically added to the homepage, as well as a seperate page for them with the template described in their folder. This makes updating the site intuitive and simple.
 
 <br> This is then built into the build folder when running npm start.
+
+<br id="tailwind-post-css"></br>
+
+## TailwindCSS & PostCSS
+
+
+<br id="gallery"></br>
+
+## Gallery
+
+<br id="remark"></br>
+
+## Remark42 comment system?
+
+
+
+<br id="gh-pages"></br>
+
+## GitHub Pages
 
 <br> Lastly I upload this to Github Pages, which uses Github Actions to build. This is configured in /.github/workflows/build.yml.
 
