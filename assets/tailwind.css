@@ -50,3 +50,7 @@ hr {
 img {
   @apply object-contain scale-50 max-h-full drop-shadow-md rounded-md m-auto;
 }
+
+.scroll-anchor {
+  @apply ~scroll-m-24/20;
+}
