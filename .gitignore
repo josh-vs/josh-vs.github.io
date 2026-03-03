@@ -5,4 +5,3 @@ web_modules/
 .cache/
 .config/
 josh-vs.github.io.code-workspace
-package-lock.json
