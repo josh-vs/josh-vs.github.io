@@ -18,15 +18,40 @@ author: "Josh"
 <br id="intro"></br>
 ## Introduction
 
-<br> The site you're currently viewing is made using [Elventy](https://www.11ty.dev/), a simple, open source static site generator available through node.js.
+<br> The site you're currently viewing is made using [Elventy](https://www.11ty.dev/), a simple, open source static site generator available through node.js. It also uses TailwindCSS together with PostCSS for styling.
 
 <br> It's published using Github Pages. You can view the repository with the site's source code [here](https://github.com/josh-vs/josh-vs.github.io).
 
 <br> After installing Eleventy into my site folder, I set up the .eleventy.js file:
 
+<br> ![](/assets/img/dvssite/eleventyjs.png)
+
 <br> - [ ] tailwind and postcss
 
-<br> ![](/assets/img/dvssite/eleventyjs.png)
+<br> After installing TailWindCSS and PostCSS using NPM I added this code to the .eleventy.js file:
+
+```
+const tailwind = require("tailwindcss");
+const postCss = require("postcss");
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
+
+
+const postcssFilter = (cssCode, done) => {
+  postCss([
+    tailwind(require("./tailwind.config")),
+    autoprefixer(),
+    cssnano({ preset: "default" }),
+  ])
+    .process(cssCode, {
+      from: "./assets/tailwind.css",
+    })
+    .then(
+      (r) => done(null, r.css),
+      (e) => done(e, null)
+    );
+};
+```
 
 <br id="file-structure"></br>
 

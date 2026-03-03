@@ -1,7 +1,7 @@
 {
-  "name": "danielvonstolzenberg.github.io",
+  "name": "josh-vs.github.io",
   "version": "0.0.1",
-  "description": "joshlil.click website",
+  "description": "josh-vs website",
   "scripts": {
     "start": "eleventy --serve",
     "build": "NODE_ENV=production eleventy"
@@ -25,6 +25,6 @@
     "node": "20"
   },
   "repository": {
-    "url": "https://github.com/danielvonstolzenberg/danielvonstolzenberg.github.io"
+    "url": "https://github.com/josh-vs/josh-vs.github.io"
   }
 }

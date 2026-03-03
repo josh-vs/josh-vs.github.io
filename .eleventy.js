@@ -1,12 +1,12 @@
 const { DateTime } = require("luxon");
 const pluginSEO = require("eleventy-plugin-seo");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const markdownIt = require("markdown-it");
+const markdownItClass = require('@toycode/markdown-it-class');
 const tailwind = require("tailwindcss");
 const postCss = require("postcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
-const markdownIt = require("markdown-it");
-const markdownItClass = require('@toycode/markdown-it-class');
 
 
 const postcssFilter = (cssCode, done) => {
@@ -16,7 +16,7 @@ const postcssFilter = (cssCode, done) => {
     cssnano({ preset: "default" }),
   ])
     .process(cssCode, {
-      from: "./src/_includes/styles/tailwind.css",
+      from: "./assets/tailwind.css",
     })
     .then(
       (r) => done(null, r.css),
@@ -29,7 +29,6 @@ const postcssFilter = (cssCode, done) => {
 module.exports = function (eleventyConfig) {
   eleventyConfig.setTemplateFormats([
     "html",
-    "liquid",
     "njk",
     "md",
     "css",
@@ -81,7 +80,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setLibrary("md", md);
 
   // Tailwind & postcss config:
-  eleventyConfig.addWatchTarget("./src/_includes/styles/tailwind.css");
+  eleventyConfig.addWatchTarget("./assets/tailwind.css");
   eleventyConfig.addNunjucksAsyncFilter("postcss", postcssFilter);
 
   function addCollection(collectionName) {
