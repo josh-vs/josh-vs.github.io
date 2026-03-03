@@ -11,35 +11,36 @@ pre { @apply antialiased p-3 my-2 border-s-4 border-neutral-500 bg-neutral-900 t
 ul { @apply antialiased text-base text-inherit list-disc text-stone-200; }
 ol { @apply antialiased text-base text-inherit list-decimal text-stone-300; }
 a { @apply antialiased text-base text-inherit text-amber-200 hover:text-amber-100} */
+
 h1 {
-  @apply lg:text-2xl md:text-4xl text-6xl text-ylorp text-opacity-70 font-extrabold italic text-center;
+  @apply ~text-3xl/5xl text-ylorp text-opacity-70 font-extrabold italic text-center;
 }
 
 h2 {
-  @apply lg:text-xl md:text-2xl text-4xl text-ylorp font-extrabold text-justify;
+  @apply ~text-2xl/4xl text-ylorp font-extrabold text-justify;
 }
 
 h3 {
-  @apply lg:text-xl md:text-2xl text-4xl text-ylorp font-extrabold italic text-justify;
+  @apply ~text-2xl/4xl text-ylorp text-opacity-70 font-extrabold italic text-justify;
 }
 
 a {
-  @apply lg:text-xl md:text-2xl text-4xl text-plorp;
+  @apply ~text-lg/2xl text-plorp;
 }
 
 a:hover {
-  @apply lg:text-xl md:text-2xl text-4xl underline text-goldgray;
+  @apply underline text-goldgray;
 }
 
 p {
-  @apply lg:text-xl md:text-2xl text-4xl text-ylorp font-extralight antialiased text-justify;
+  @apply ~text-lg/2xl text-ylorp font-extralight antialiased text-justify;
 }
 
 strong {
   @apply font-extrabold
 }
 span {
-  @apply lg:text-xl md:text-2xl text-4xl text-ylorp font-extrabold italic;
+  @apply  text-ylorp font-extrabold italic;
 }
 
 hr {
@@ -48,4 +49,8 @@ hr {
 
 img {
   @apply object-contain scale-50 max-h-full drop-shadow-md rounded-md m-auto;
+}
+
+.scroll-anchor {
+  @apply ~scroll-m-24/20;
 }
