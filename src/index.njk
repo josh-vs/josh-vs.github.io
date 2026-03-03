@@ -2,150 +2,110 @@
 layout: layout.njk
 title: Home
 tags: nav
+
 ---
 
-<br id="about">
-
-<section>
-<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
-  <br>
-  <div>
-    <h1>About</h1>
-    <br>
-    <p class="text-center">My name is Josh. I like to make things and learn stuff.
-    <p>
+<section id="about">
+  <div class="text-center mt-5 mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 ~px-5/11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
+    <h1 class="pb-5">About</h1>
+    <p class="text-justify">
+      My name is Josh. I like to make things and learn stuff.
+    </p>
   </div>
-</div>
 </section>
 
-<br id="projects">
-
-<section>
-<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
-  <br>
-  <hr>
-  <br>
-  <div>
-    <h1>Projects</h1>
-    <br>
+<section id="projects">
+  <div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 ~px-5/11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
+    <h1 class="pb-5">Projects</h1>
     {% for post in collections.proj %}
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      <p class="opacity-30 italic text-center">{{ post.data.author }} - {{ post.data.date | fulldate }}</p>
-    <br>
+    <p class="opacity-30 italic text-center">
+      {{ post.data.date | fulldate }}:
+    </p>
+    <a href="{{ post.url }}" class="~mb-1/5">{{ post.data.title }}</a>
     {% endfor %}
   </div>
-</div>
 </section>
 
-<br id="library">
-
-<section>
-<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
-  <br>
-  <hr>
-  <br>
-  <div>
-    <h1>Library</h1>
-    <br>
-      {% for post in collections.lib %}
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
-        <p class="opacity-30 italic text-center">{{ post.data.author }} - last updated: {{ post.data.date | fulldate }}</p>
-        <br>
-      {% endfor %}
+<section id="library">
+  <div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 ~px-5/11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
+    <h1 class="pb-5">Library</h1>
+    {% for post in collections.lib %}
+    <p class="opacity-30 italic text-center">
+      last updated: {{ post.data.date | fulldate }}
+    </p>
+    <a href="{{ post.url }}" class="~mb-1/5">{{ post.data.title }}</a>
+    {% endfor %}
   </div>
-</div>
 </section>
 
-<br id="gallery">
-
-<section>
-<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
-  <br>
-  <hr>
-  <br>
-  <div>
-  {% set atPost = 0 %}
-    {% for pic in collections.gallery | reverse%}
+<section id="gallery">
+  <div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 ~px-5/11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
+    {% set atPost = 0 %}
+    {% for pic in collections.gallery | reverse %}
       {% if atPost < 1 %}
-        <a href="{{ pic.url }}#gallerypage"><h1>Gallery</h1></a>
-      {% endif%}
+        <a href="{{ pic.url }}#gallerypage"><h1 class="pb-5">Gallery</h1></a>
+      {% endif %}
       {% set atPost = atPost + 1 %}
     {% endfor %}
-    <br>
-    <div class="columns-2 flex-auto">
+    <div class="pb-5 columns-2 flex-auto">
       {% set atPost = 0 %}
-      {% for pic in collections.gallery | reverse%}
+      {% for pic in collections.gallery | reverse %}
         {% if atPost < 4 %}
           <p class="opacity-30 italic text-center">{{ pic.date | date }}:</p>
-          <span >{{ pic.data.name }}</span>
-          <br><br>
+          <span>{{ pic.data.name }}</span>
           <a href="{{ pic.url }}">
-            <div class="h-80">
-              <img class="rounded-md shadow-lg shadow-blorp" src="{{ pic.data.path }}" alt="{{ pic.data.name }}" />
-            </div>
+            <img
+              class="mb-5 ~h-52/80 object-fit rounded-md"
+              src="{{ pic.data.path }}"
+              alt="{{ pic.data.name }}"
+            />
           </a>
-          <br>
-          <hr>
-          <br>
-        {% endif%}
+        {% endif %}
         {% set atPost = atPost + 1 %}
       {% endfor %}
     </div>
-  {% set atPost = 0 %}
-    {% for pic in collections.gallery | reverse%}
+    {% set atPost = 0 %}
+    {% for pic in collections.gallery | reverse %}
       {% if atPost < 1 %}
-        <a href="{{ pic.url }}#gallerypage"><h1>View more...</h1></a>
-      {% endif%}
+        <a href="{{ pic.url }}#gallerypage"><h3 class="">View more...</h1></a>
+      {% endif %}
       {% set atPost = atPost + 1 %}
     {% endfor %}
   </div>
-</div>
 </section>
 
-<br id="sketch">
-
-<section>
-<div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 px-11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
-  <br>
-  <hr>
-  <br>
-  <div>
-   {% set atPost = 0 %}
-    {% for pic in collections.sketch | reverse%}
+<section id="sketch">
+  <div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 ~px-5/11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
+    {% set atPost = 0 %}
+    {% for pic in collections.sketch | reverse %}
       {% if atPost < 1 %}
-        <a href="{{ pic.url }}#sketchpage"><h1>Sketchbook</h1></a>
-      {% endif%}
+        <a href="{{ pic.url }}#sketchpage"><h1 class="pb-5">Sketchbook</h1></a>
+      {% endif %}
       {% set atPost = atPost + 1 %}
     {% endfor %}
-    <br>
-    <div class="columns-2 flex-auto">
+    <div class="pb-5 columns-2 flex-auto">
       {% set atPost = 0 %}
-      {% for pic in collections.sketch | reverse%}
+      {% for pic in collections.sketch | reverse %}
         {% if atPost < 4 %}
           <p class="opacity-30 italic text-center">{{ pic.date | date }}:</p>
-          <span >{{ pic.data.name }}</span>
-          <br><br>
+          <span>{{ pic.data.name }}</span>
           <a href="{{ pic.url }}">
-            <div class="h-80">
-              <img class="rounded-md shadow-lg shadow-blorp" src="{{ pic.data.path }}" alt="{{ pic.data.name }}" />
-            </div>
+            <img
+              class="mb-5 ~h-52/80 object-fit rounded-md"
+              src="{{ pic.data.path }}"
+              alt="{{ pic.data.name }}"
+            />
           </a>
-          <br>
-          <hr>
-          <br>
-        {% endif%}
+        {% endif %}
         {% set atPost = atPost + 1 %}
       {% endfor %}
     </div>
-  {% set atPost = 0 %}
-    {% for pic in collections.sketch | reverse%}
+    {% set atPost = 0 %}
+    {% for pic in collections.sketch | reverse %}
       {% if atPost < 1 %}
-        <a href="{{ pic.url }}#sketchpage"><h1>View more...</h1></a>
-      {% endif%}
+        <a href="{{ pic.url }}#sketchpage"><h3 class="">View more...</h1></a>
+      {% endif %}
       {% set atPost = atPost + 1 %}
     {% endfor %}
-    </div>
   </div>
-</div>
 </section>
-
