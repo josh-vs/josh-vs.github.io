@@ -11,6 +11,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@tailwindcss/typography": "^0.5.16",
     "@toycode/markdown-it-class": "^1.2.4",
+    "fluid-tailwind": "^1.0.4",
     "eleventy-plugin-seo": "^0.5.2",
     "luxon": "^3.3.0",
     "markdown-it": "^14.1.0"

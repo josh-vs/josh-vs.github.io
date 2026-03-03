@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "src/**/*.{njk, md, html}"
-  ],
+import fluid, { extract, screens, fontSize } from 'fluid-tailwind'
+
+export default {
+  content: {
+    files: ["src/**/*.{njk, md, html}"],
+    extract
+  },
   safelist: [],
   darkMode: "class",
   theme: {
@@ -12,11 +15,16 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [fluid,
+            require("@tailwindcss/typography")],
   theme: {
+    screens, // Tailwind's default screens, in `rem`Q
+    fontSize, // Tailwind's default font sizes, in `rem` (including line heights)
     extend: {
+      screens: {
+        xs: '20rem'
+      },
       fontFamily: {
-        victor: ['"Victor Mono"'],
         garamond: ['"Cormorant Garamond"'],
       },
       colors: {
@@ -27,10 +35,8 @@ module.exports = {
         'tlorp': "#0f2726",
         'plorp': "#c2a6bf",
         'brap': "#1f3f3d",
-        'brap_white': "#85919b"
-      }
+        'brap_white': "#85919b"      }
     },
   },
 };
-
 
