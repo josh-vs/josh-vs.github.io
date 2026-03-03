@@ -18,7 +18,7 @@ tags: nav
   <div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 ~px-5/11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
     <h1 class="pb-5">Projects</h1>
     {% for post in collections.proj %}
-    <p class="opacity-30 italic text-center">
+    <p class="text-opacity-30 italic text-center">
       {{ post.data.date | fulldate }}:
     </p>
     <a href="{{ post.url }}" class="~mb-1/5">{{ post.data.title }}</a>
@@ -30,7 +30,7 @@ tags: nav
   <div class="text-center mx-auto lg:max-w-screen-md md:max-w-screen-sm max-w-screen-sm rounded-s grid grid-cols-1 ~px-5/11 py-7 bg-tlorp place-items-center shadow-lg drop-shadow-xl shadow-black">
     <h1 class="pb-5">Library</h1>
     {% for post in collections.lib %}
-    <p class="opacity-30 italic text-center">
+    <p class="text-opacity-30 italic text-center">
       last updated: {{ post.data.date | fulldate }}
     </p>
     <a href="{{ post.url }}" class="~mb-1/5">{{ post.data.title }}</a>
@@ -51,7 +51,7 @@ tags: nav
       {% set atPost = 0 %}
       {% for pic in collections.gallery | reverse %}
         {% if atPost < 4 %}
-          <p class="opacity-30 italic text-center">{{ pic.date | date }}:</p>
+          <p class="text-opacity-30 italic text-center">{{ pic.date | date }}:</p>
           <span>{{ pic.data.name }}</span>
           <a href="{{ pic.url }}">
             <img
@@ -87,7 +87,7 @@ tags: nav
       {% set atPost = 0 %}
       {% for pic in collections.sketch | reverse %}
         {% if atPost < 4 %}
-          <p class="opacity-30 italic text-center">{{ pic.date | date }}:</p>
+          <p class="text-opacity-30 italic text-center">{{ pic.date | date }}:</p>
           <span>{{ pic.data.name }}</span>
           <a href="{{ pic.url }}">
             <img
